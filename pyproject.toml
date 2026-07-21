@@ -1,0 +1,60 @@
+[build-system]
+requires = ["hatchling>=1.24"]
+build-backend = "hatchling.build"
+
+[project]
+name = "dt4acc-als-track-data"
+version = "0.0.0"
+description = "Example of using track data from digital twin"
+authors = [
+  { name = "Pierre Schnizer" },
+]
+license = { text = "GPL-3.0" }
+requires-python = ">=3.7"
+keywords = []
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Intended Audience :: Science/Research",
+  "License :: OSI Approved :: GNU General Public License (GPL)",
+  "Programming Language :: Python :: 3",
+  "Topic :: Scientific/Engineering :: Physics",
+]
+
+dependencies = [
+  # all devices are built on ophyd-async
+  # allows handling timing, dependency etc
+  # I saw some async generator exit issues for version 0.20
+  # so limiting version for now
+  "ophyd-async[ca]<=0.16",
+  # This will install dt4acc completely
+  # here only the managers are needed
+  # so a bit too much installed here
+  "dt4acc-als",
+  # could be an optional dependency,
+  # but protcols are only delivered as part of bluesky
+  "bluesky",
+]
+
+
+[project.urls]
+Homepage = "https://github.com/PierreSchnizer/dt4acc-als-track-data"
+Documentation = "https://github.com/PierreSchnizer/dt4acc-als-track-data"
+Repository = "https://github.com/PierreSchnizer/dt4acc-als-track-data.git"
+
+
+[project.optional-dependencies]
+
+# interactive example based on QT
+# will need a different interface for MAC
+qt-example = [
+  "imageio[ffmpeg]",
+  "matplotlib",
+  "PyQt6",
+  "qasync"
+]
+
+[tool.hatch.build.targets.wheel]
+# packages = ["src/dt4acc_als"]
+
+[tool.hatch.build]
+dev-mode-dirs = ["src"]
