@@ -37,7 +37,7 @@ to type
 
 ```bash
 
-dt44acc_als
+dt4acc_als
 ```
 
 It will provide some messages: at the end it will give you access to 
@@ -53,5 +53,5 @@ Both set the start vector and retrieve the data.
 * `33_tbt_with_sampled_start_vec.py`samples start vectors from 
   some emittance based distribution
    
-* 
+
 
